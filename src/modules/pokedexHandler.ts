@@ -2,7 +2,7 @@ import pokedex from "../../data/pokedex.json";
 
 
 function hasNumberId(pokemonData: any) {
-  return typeof pokemonData.id === "number";
+  return typeof pokemonData.id === "number" && pokemonData.id >0;
 }
 
 const newPokedex = pokedex
