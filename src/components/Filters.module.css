@@ -1,0 +1,7 @@
+.filters {
+  display: grid;
+  grid-auto-flow: column;
+  width:80%;
+  gap:10px;
+  grid-auto-columns: 1fr;
+}

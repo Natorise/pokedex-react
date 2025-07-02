@@ -1,74 +1,42 @@
 import React from "react";
 import styles from "./Entries.module.css";
 
-import typeColors from "../../data/typeColors.json";
-import { Link, useNavigate} from "react-router-dom";
 import { normalize } from "../modules/normalize";
-import pokemonIdToUrl from "../modules/pokemonIdToUrl";
 
 
 import { pokedex } from "../modules/pokedexHandler";
+import Entry from "./Entry";
 
-type propsType = {pokeName: string}
+type propsType = {pokeName: string,region: string,type: string, rarity: string}
 
-const Entries = ({pokeName}: propsType) => {
-  const navigate = useNavigate();
-  
+
+
+const Entries = ({pokeName, region, type, rarity}: propsType) => {
+  console.log(region,type)
   let filteredPokedex = pokedex
-  if(pokeName) filteredPokedex = filteredPokedex.filter(x=>x.names.map(x=>normalize(x)).some(x=>x.includes(pokeName)))
-
+  console.log(filteredPokedex.filter(x=>!x.names || typeof x.names.length !== "number"))
+    filteredPokedex = filteredPokedex
+    .filter(pokemon=>{
+      let passed = true
+      if(pokeName) passed = passed && 
+        pokemon.names.map((name: string) =>normalize(name))
+        .some((name:string)=>name.includes(pokeName))
+      
+      if(region) passed = passed && pokemon.region.toLowerCase() === region
+      if(type) passed = passed && pokemon.types.some((x:string)=>x.toLowerCase() === type)
+      if(rarity) passed = passed && pokemon.rarity?.includes(rarity)
+      return passed
+   })
+  filteredPokedex = filteredPokedex.slice(0,20)
   return (
     <div className={styles.entries}>      
-      {filteredPokedex.map((pokemonData) => {
-        const color = getColorFromTypes(pokemonData.types);
-
-        return (
-          <div onClick={() => navigate(`/dex/${pokemonData.id}`)} className={styles.entry} style={{ background: color }}>
-            <h1>{pokemonData.name}</h1>
-            <p>stats</p>
-            <p>type: {pokemonData.types.join(" | ")}</p>
-            <img
-              className={styles.pokemonImage}
-              src={pokemonIdToUrl(pokemonData.id as number)}
-              width={475}
-              height={475}
-              alt={pokemonData.name}
-              loading="lazy"
-            />
-          </div>
-        );
-      })}
+      {
+      filteredPokedex.map((pokemonData) =>
+        <Entry types={pokemonData.types} name={pokemonData.name} id={pokemonData.id}/>
+      )
+      }
     </div>
   );
 };
 
 export default Entries;
-
-
-
-
-// react-window use this for scroll pagination
-
-function getColorFromType(type: string): string {
-  type = type.toLowerCase();
-  if (type in typeColors) {
-    return typeColors[type as keyof typeof typeColors];
-  } else return "#aaaaaa";
-}
-
-function getColorFromTypes(types: string[]): string {
-  const [type1, type2] = types;
-
-  if (!type2) return getColorFromType(type1);
-
-  // old ${getColorFromType(type1)}, ${getColorFromType(type2)})
-
-  return `linear-gradient(
-    to bottom, 
-    ${getColorFromType(type1)} 0%,
-    ${getColorFromType(type1)} 10%,
-    ${getColorFromType(type2)} 90%,
-    ${getColorFromType(type2)} 100%
-  )`;
-}
-

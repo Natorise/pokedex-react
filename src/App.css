@@ -1,0 +1,21 @@
+html {
+  min-height: 100%;
+
+}
+
+
+body {
+  margin: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffffff 0px,
+    #ffffff 20px,
+    #eeeeee 20px,
+    #eeeeee 40px
+  ); 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

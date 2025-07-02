@@ -1,25 +1,9 @@
 .entries {
   display: grid;
   grid-template-columns: repeat(4,1fr);
-}
-.entry {
-  background-color: green;
-  padding: 5px;
-  margin: 5px;
-  width: 50%;
-  justify-content: center;
-  border-radius: 10px;
-  outline-width: 5px;
-
-  /* outline: solid black 2px; */
-  cursor: pointer;
-}
-
-.pokemonImage {
-  max-width:80%;
-  /* max-height: 80%; */
-  height:auto;
-  display:block;
-  /* max-height:auto; */
-  /* height: 475px; */
+  width: 80%;
+  /* place-items: center; */
+  justify-items: center;
+  /* gap:20px; */
+  column-gap: 30px;
 }

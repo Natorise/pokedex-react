@@ -1,4 +1,6 @@
 main back button is broken when using next and back buttons
+also it doesnt even save the options, solution: pass all the options and scroll position
+problem: scroll position may not work due to the scroll pagination i will implement later
 
 css
 mobile support
@@ -8,3 +10,9 @@ use pokeapi?
 
 
 pokemon info page needs more info
+
+
+add scroll pagination; when loading all the pokemon all at once it is very laggy
+react-window for pagination
+
+sidecard too small
