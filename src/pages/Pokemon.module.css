@@ -1,4 +1,10 @@
 
+.backButton {
+  position:absolute;
+}
+.backButton:hover {
+  cursor: pointer;
+}
 
 .description {
   width:90%;
