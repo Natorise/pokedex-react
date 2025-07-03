@@ -1,0 +1,55 @@
+
+.backButton {
+  position:absolute;
+}
+.backButton:hover {
+  cursor: pointer;
+}
+.buttons {
+  display:flex;
+  width:50%;
+  margin-bottom: 10px;
+}
+.button {
+  /* outline: solid black; */
+  /* box-shadow: 0 0 3px ; */
+  border-radius: 10px;
+  background-color: #aaa;
+  display:flex;
+  align-items: center;
+  padding: 5px;
+
+  color:white;
+  font-size: 1.5em;
+  user-select: none;
+}
+.button:hover {
+  cursor: pointer;
+}
+
+.leftButton, .rightButton {
+  flex: 1;
+}
+
+.leftButton {
+  margin-left: 0;
+}
+
+.rightButton {
+  margin-right: 0;
+  justify-content: right;
+}
+
+.centerButton {
+ margin: 0 10px;
+ /* background-color: #dd7973;5adbb5 */
+}
+
+.true {
+  background-color: #5adbb5;
+
+}
+
+.false {
+  background-color: #dd7973;
+}

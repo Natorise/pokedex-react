@@ -15,4 +15,23 @@ pokemon info page needs more info
 add scroll pagination; when loading all the pokemon all at once it is very laggy
 react-window for pagination
 
-sidecard too small
+sidecard too small seems good now
+
+
+
+checklist
+fonts :check:
+style buttons :check:
+
+style filters
+scroll pagination, react-window
+back button fix
+mobile styling
+
+
+the title on home page could be bigger or something
+
+pokemon page titles need margin
+
+
+

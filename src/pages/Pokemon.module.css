@@ -20,12 +20,12 @@
   display:flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
   height:100vh;
 }
 
 .main {
   display:flex;
-  background-color: lightblue;
   width:50%;
   border-radius: 10px;
   box-shadow: 0px 0px 3px;
