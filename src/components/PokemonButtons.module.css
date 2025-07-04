@@ -46,3 +46,14 @@
 .false {
   background-color: #dd7973;
 }
+
+
+@media (max-width: 1000px) {
+  .buttons {
+    width: 70%;
+  }
+}@media (max-width: 800px) {
+  .buttons {
+    width: 90%;
+  }
+}

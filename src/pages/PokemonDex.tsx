@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import styles from "./Pokemon.module.css";
+import styles from "./PokemonDex.module.css";
 import { pokedex } from "../modules/pokedexHandler";
 import stats from "../../data/stats";
 import Types from "../components/Types";
@@ -100,10 +100,10 @@ const PokemonDex = () => {
 
   return (
     <div>
-      <IoArrowBackCircleOutline className={styles.backButton} size={70} onClick={() => navigate(-1)}/>
+      <IoArrowBackCircleOutline size={70} onClick={() => navigate(-1)}/>
+      <div></div>
       <div className={styles.center}>
         <PokemonButtons pokeId={pokemonData.id} shiny={shiny} setShiny={setShiny} />
-
         <div className={styles.main} style={{ background: color }}>
           <div className={styles.sidecard}>
             <p>#{id}</p>
