@@ -39,8 +39,8 @@ const RightField = ({
 }) => {
   return (
     <div className={styles.field}>
-      <h3>{name}</h3>
-      <div className={`${styles.rightValue} ${styles.fieldValue}`}>
+      <h3 className={styles.rightFieldTitle}>{name}</h3>
+      <div className={`${styles.rightFieldValue} ${styles.fieldValue}`}>
         {children}
       </div>
     </div>
@@ -130,7 +130,6 @@ const PokemonDex = () => {
             </SideCardField>
           </div>
           <div className={styles.pokemonInfo}>
-            {/* <Field name={"About"} value=/> */}
             <RightField name={"About"}>
               <p>{pokemonData.description}</p>
             </RightField>
