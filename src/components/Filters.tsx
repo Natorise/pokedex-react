@@ -37,11 +37,7 @@ const Filters = ({pokeName, setPokeName, setRegion, setType,setRarity}: propsTyp
 
   return (
     <div className={styles.filters}>
-      {/* <div style={{display:'flex',alignItems:"center",flexDirection:"column"}}> */}
-        {/* Name */}
       <input type="text" placeholder='Name' value={pokeName} onChange={onNameChange}/>
-
-      {/* </div> */}
       <select id="region" onChange={onSelectChange}>
         <option value="">Select Region</option>
         {regions.map(x=><option value={x}>{upperCaseFirst(x)}</option>)}
