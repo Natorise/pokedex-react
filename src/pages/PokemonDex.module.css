@@ -1,7 +1,4 @@
 
-.backButton {
-  position:absolute;
-}
 .backButton:hover {
   cursor: pointer;
 }
@@ -23,11 +20,14 @@
 
 
 .center {
+  width:100vw;
   display:flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-flow: column;
   height:100vh;
+  margin-top: 5%;
+
 }
 
 .main {
@@ -54,7 +54,6 @@
 }
 
 .pokemonInfo {
-  width:100%;
   padding:15px;
 }
 .rightFieldTitle {
@@ -66,12 +65,10 @@
   border-radius: 10px;
   box-shadow: 0px 0px 3px;
   padding:8px;
-
-}
-.rightFieldValue {
   margin-bottom: 10px;
-}
 
+
+}
 
 .statsValue {
   display: grid;
@@ -90,4 +87,21 @@
 .centerText {
   text-align: center;
 
+}
+
+
+@media (max-width: 1000px) {
+  .main {
+    flex-direction: column;
+    width: 70%;
+  }
+  .center {
+    margin-top: 0%;
+  }
+
+}
+@media (max-width: 800px) {
+  .main {
+    width: 90%
+  }
 }

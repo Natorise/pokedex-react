@@ -26,9 +26,16 @@ style filters :check:
 make title bigger :check:
 pokemon page titles need margin :check:
 
-scroll pagination, react-window
-back button fix
+
 mobile styling
+back button fix
+
+scroll pagination, react-window
+
+remove console.log, fix errors
+
+refactor
+
 
 
 
