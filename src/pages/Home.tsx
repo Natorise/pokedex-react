@@ -13,7 +13,7 @@ const Home = () => {
   
   return (
     <div className={styles.home}>
-      <h1>Pokedex</h1>
+      <h1 className={styles.title}>Pokedex</h1>
       <Filters pokeName={pokeName} setPokeName={setPokeName}
       region={region} setRegion={setRegion}
       type={type} setType={setType}
