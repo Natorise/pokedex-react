@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import styles from "./PokemonDex.module.css";
 import { pokedex } from "../modules/pokedexHandler";
@@ -10,6 +10,7 @@ import { getColorFromTypes } from "../modules/getColorFromTypes";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 import PokemonButtons from "../components/PokemonButtons"
+import type { FiltersType } from "../components/Filters";
 
 const notFound = "Pokemon not found.";
 
@@ -86,6 +87,9 @@ const PokemonDex = () => {
 
   const { id } = useParams<{ id: string }>();
 
+  const location = useLocation();
+  const filters: FiltersType | undefined = location.state?.filters;
+
   const pokeId = Number(id);
   if (isNaN(pokeId)) return notFound;
 
@@ -100,7 +104,7 @@ const PokemonDex = () => {
 
   return (
     <div>
-      <IoArrowBackCircleOutline className={styles.backButton}size={70} onClick={() => navigate(-1)}/>
+      <IoArrowBackCircleOutline className={styles.backButton}size={70} onClick={() => navigate("/", {state: {filters}})}/>
       <div></div>
       <div className={styles.center}>
         <PokemonButtons pokeId={pokemonData.id} shiny={shiny} setShiny={setShiny} />

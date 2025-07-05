@@ -5,7 +5,8 @@ import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 
 import styles from "./PokemonButtons.module.css";
 import { pokedex } from "../modules/pokedexHandler";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import type { FiltersType } from "./Filters";
 
 type propsType = {
   pokeId: number;
@@ -15,6 +16,9 @@ type propsType = {
 
 const PokemonButtons = ({ pokeId, shiny, setShiny }: propsType) => {
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const filters: FiltersType | undefined = location.state?.filters;
 
   const [previousPokeData,nextPokeData] = getPreviousNextPokeData(pokeId);
 
@@ -28,7 +32,7 @@ const PokemonButtons = ({ pokeId, shiny, setShiny }: propsType) => {
       <div
         className={`${styles.button} ${styles.leftButton}`}
         onClick={() => {
-          navigate(`/dex/${previousPokeData.id}`);
+          navigate(`/dex/${previousPokeData.id}`,{state: {filters}});
         }}
       >
         <IoArrowBackOutline size={50} color="white" />
@@ -40,7 +44,7 @@ const PokemonButtons = ({ pokeId, shiny, setShiny }: propsType) => {
       <div
         className={`${styles.button} ${styles.rightButton}`}
         onClick={() => {
-          navigate(`/dex/${nextPokeData.id}`);
+          navigate(`/dex/${nextPokeData.id}`,{state: {filters}});
         }}
       >
         {nextPokeData.name}
