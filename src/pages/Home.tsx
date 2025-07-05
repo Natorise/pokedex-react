@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <h1 className={styles.title}>Pokedex</h1>
+      <img className={styles.title} src="/Pokedex.png" height={100}></img>
       <Filters filters={filters} setFilters={setFilters}
       />
       <Entries filters={filters} setFilters={setFilters} />

@@ -8,5 +8,6 @@
 .title {
   font-size: 3em;
   margin: 10px;
+  filter: drop-shadow(3px 3px 5px rgba(0,0,0,.7));
 }
 
