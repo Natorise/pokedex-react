@@ -5,6 +5,9 @@ import typeColors from "../../data/typeColors.json";
 import rarities from "../../data/rarities.json";
 import upperCaseFirst from '../modules/upperCaseFirst';
 import styles from "./Filters.module.css";
+import { pokedex } from "../modules/pokedexHandler";
+import { normalize } from "../modules/normalize";
+
 const types = Object.keys(typeColors)
 
 export type FiltersType = {
@@ -71,3 +74,26 @@ const Filters = ({filters, setFilters}: propsType) => {
 }
 
 export default Filters
+
+export function filterPokedex(filters:FiltersType) {
+  let filteredPokedex = pokedex;
+  filteredPokedex = filteredPokedex.filter((pokemon) => {
+    let passed = true;
+    if (filters.name)
+      passed =
+        passed &&
+        pokemon.names
+          .map((name: string) => normalize(name))
+          .some((name: string) => name.includes(filters.name));
+
+    if (filters.region) passed = passed && pokemon.region.toLowerCase() === filters.region;
+    if (filters.type)
+      passed =
+        passed && pokemon.types.some((x: string) => x.toLowerCase() === filters.type);
+    if (filters.rarity) passed = passed && pokemon.rarity?.includes(filters.rarity);
+    return passed;
+  });
+
+  return filteredPokedex
+
+}

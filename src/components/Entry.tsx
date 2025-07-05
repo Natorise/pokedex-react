@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Types from "./Types";
 import PokemonImage from "./PokemonImage";
 
@@ -15,16 +15,14 @@ type propsType = {
   filters: FiltersType;
 };
 
-const Entry = ({ types, name, id,filters}: propsType) => {
+const Entry = ({ types, name, id, filters }: propsType) => {
   const navigate = useNavigate();
 
-  
   const color = getColorFromTypes(types);
-
 
   return (
     <div
-    onClick={() => navigate(`/dex/${id}`, { state: { filters } })}
+      onClick={() => navigate(`/dex/${id}`, { state: { filters } })}
       className={styles.entry}
       style={{ background: color }}
     >
