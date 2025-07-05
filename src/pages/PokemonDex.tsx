@@ -100,7 +100,7 @@ const PokemonDex = () => {
 
   return (
     <div>
-      <IoArrowBackCircleOutline size={70} onClick={() => navigate(-1)}/>
+      <IoArrowBackCircleOutline className={styles.backButton}size={70} onClick={() => navigate(-1)}/>
       <div></div>
       <div className={styles.center}>
         <PokemonButtons pokeId={pokemonData.id} shiny={shiny} setShiny={setShiny} />
