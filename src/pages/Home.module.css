@@ -1,17 +1,15 @@
 .home {
-  display:flex;
+  display: flex;
   align-items: center;
-  /* width: 100%; */
   flex-direction: column;
 }
 
 .title {
   font-size: 3em;
   margin: 10px;
-  filter: drop-shadow(3px 3px 5px rgba(0,0,0,.7));
+  filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.7));
 }
 
 .title:hover {
   cursor: pointer;
 }
-

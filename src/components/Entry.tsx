@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Types from "./Types";
 import PokemonImage from "./PokemonImage";
 

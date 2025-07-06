@@ -16,7 +16,8 @@ export const pokemonTypes = [
   "dragon",
   "dark",
   "steel",
-  "fairy"
-]
+  "fairy",
+];
 
-export const getTypePath = (type: string) => `/pokemon-type-icons/icons/${type.toLowerCase()}.svg`
+export const getTypePath = (type: string) =>
+  `/pokemon-type-icons/icons/${type.toLowerCase()}.svg`;

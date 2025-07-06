@@ -20,48 +20,40 @@ const PokemonButtons = ({ pokeId, shiny, setShiny }: propsType) => {
   const location = useLocation();
   const filters: FiltersType | undefined = location.state?.filters;
 
-  const [previousPokeData,nextPokeData] = getPreviousNextPokeData(pokeId);
+  const [previousPokeData, nextPokeData] = getPreviousNextPokeData(pokeId);
 
   const toggleShiny = () => {
     setShiny(!shiny);
-  }
+  };
 
-  // const next =
   return (
     <div className={styles.buttons}>
       <div
         className={`${styles.button} ${styles.leftButton}`}
         onClick={() => {
-          navigate(`/dex/${previousPokeData.id}`,{state: {filters}});
+          navigate(`/dex/${previousPokeData.id}`, { state: { filters } });
         }}
       >
         <IoArrowBackOutline size={50} color="white" />
         {previousPokeData.name}
       </div>
-      <div className={`${styles.button} ${styles.centerButton} ${shiny ? styles.true : styles.false}`} onClick={toggleShiny}>
+      <div
+        className={`${styles.button} ${styles.centerButton} ${
+          shiny ? styles.true : styles.false
+        }`}
+        onClick={toggleShiny}
+      >
         <IoSparkles color="white" size={50} />
       </div>
       <div
         className={`${styles.button} ${styles.rightButton}`}
         onClick={() => {
-          navigate(`/dex/${nextPokeData.id}`,{state: {filters}});
+          navigate(`/dex/${nextPokeData.id}`, { state: { filters } });
         }}
       >
         {nextPokeData.name}
         <IoArrowForwardOutline color="white" size={50} />
       </div>
-
-      {/* <button onClick={() => navigate(`/dex/${getPreviousPokeId(pokeId)}`)}>
-  back
-</button>
-<button onClick={() => navigate(`/dex/${getNextPokeId(pokeId)}`)}>
-  next
-</button>
-<button
-  onClick={}
->
-  Toggle Shiny
-</button> */}
     </div>
   );
 };
@@ -79,13 +71,11 @@ function findPokeIndex(pokeId: number) {
   return pokedex.findIndex((x) => x.id === pokeId);
 }
 
-
 function getPreviousNextPokeData(pokeId: number) {
   const index = findPokeIndex(pokeId);
   let previousIndex = wraparoundIndex(index - 1);
   let nextIndex = wraparoundIndex(index + 1);
 
-  let newPokeDatas = [pokedex[previousIndex],pokedex[nextIndex]]
+  let newPokeDatas = [pokedex[previousIndex], pokedex[nextIndex]];
   return newPokeDatas;
-
 }

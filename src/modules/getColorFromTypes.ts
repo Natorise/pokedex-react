@@ -12,8 +12,6 @@ export function getColorFromTypes(types: string[]): string {
 
   if (!type2) return getColorFromType(type1);
 
-  // old ${getColorFromType(type1)}, ${getColorFromType(type2)})
-
   return `linear-gradient(
     to bottom, 
     ${getColorFromType(type1)} 0%,
@@ -22,5 +20,3 @@ export function getColorFromTypes(types: string[]): string {
     ${getColorFromType(type2)} 100%
   )`;
 }
-
-// const flags = ["]

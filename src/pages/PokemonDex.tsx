@@ -3,13 +3,12 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import styles from "./PokemonDex.module.css";
 import { pokedex } from "../modules/pokedexHandler";
-import stats from "../../data/stats";
 import Types from "../components/Types";
 import PokemonImage from "../components/PokemonImage";
 import { getColorFromTypes } from "../modules/getColorFromTypes";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 
-import PokemonButtons from "../components/PokemonButtons"
+import PokemonButtons from "../components/PokemonButtons";
 import type { FiltersType } from "../components/Filters";
 
 const notFound = "Pokemon not found.";
@@ -84,7 +83,6 @@ const Names = ({ names }: { names: string[] }) => {
 };
 
 const PokemonDex = () => {
-
   const { id } = useParams<{ id: string }>();
 
   const location = useLocation();
@@ -104,14 +102,24 @@ const PokemonDex = () => {
 
   return (
     <div>
-      <IoArrowBackCircleOutline className={styles.backButton}size={70} onClick={() => navigate("/", {state: {filters}})}/>
-      <div></div>
+      <IoArrowBackCircleOutline
+        className={styles.backButton}
+        size={70}
+        onClick={() => navigate("/", { state: { filters } })}
+      />
       <div className={styles.center}>
-        <PokemonButtons pokeId={pokemonData.id} shiny={shiny} setShiny={setShiny} />
+        <PokemonButtons
+          pokeId={pokemonData.id}
+          shiny={shiny}
+          setShiny={setShiny}
+        />
         <div className={styles.main} style={{ background: color }}>
           <div className={styles.sidecard}>
             <p>#{id}</p>
-            <h2 className={styles.centerText}>{shiny ? "✨ " : ""}{pokemonData.name}</h2>
+            <h2 className={styles.centerText}>
+              {shiny ? "✨ " : ""}
+              {pokemonData.name}
+            </h2>
             <PokemonImage pokeId={pokemonData.id} shiny={shiny} size={400} />
 
             <Types types={pokemonData.types} />
@@ -180,4 +188,3 @@ const PokemonDex = () => {
 };
 
 export default PokemonDex;
-

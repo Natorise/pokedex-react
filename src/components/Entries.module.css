@@ -1,16 +1,14 @@
 .entries {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   width: 80%;
-  /* place-items: center; */
   justify-items: center;
-  /* gap:20px; */
   column-gap: 30px;
 }
 
 @media (max-width: 1000px) {
   .entries {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     width: 90%;
   }
 }
