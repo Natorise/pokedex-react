@@ -21,6 +21,12 @@ type propsType = {
   filters: FiltersType, setFilters: React.Dispatch<React.SetStateAction<FiltersType>>,
 }
 
+export const defaultFilters = {
+  name: "",
+  region: "",
+  type: "",
+  rarity: "",
+}
 
 
 const Filters = ({filters, setFilters}: propsType) => {

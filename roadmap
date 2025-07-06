@@ -1,23 +1,4 @@
-main back button is broken when using next and back buttons
-also it doesnt even save the options, solution: pass all the options and scroll position
-problem: scroll position may not work due to the scroll pagination i will implement later
-
-css
-mobile support
-more filters (type, region, generation?)
 sort
-use pokeapi?
-
-
-pokemon info page needs more info
-
-
-add scroll pagination; when loading all the pokemon all at once it is very laggy
-react-window for pagination
-
-sidecard too small seems good now
-
-
 
 checklist
 fonts :check:
@@ -25,15 +6,13 @@ style buttons :check:
 style filters :check:
 make title bigger :check:
 pokemon page titles need margin :check:
+mobile styling :check:
+back button fix :check:
 
 
-mobile styling
-back button fix
-
+back button save scroll position
 scroll pagination, react-window
-
 remove console.log, fix errors
-
 refactor
 
 
