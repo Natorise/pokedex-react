@@ -25,6 +25,7 @@ const Entries = ({ filters, setFilters }: propsType) => {
     <div className={styles.entries}>
       {filteredPokedex.map((pokemonData) => (
         <Entry
+          key={pokemonData.id}
           types={pokemonData.types}
           name={pokemonData.name}
           id={pokemonData.id}

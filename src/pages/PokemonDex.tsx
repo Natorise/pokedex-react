@@ -74,7 +74,7 @@ const Names = ({ names }: { names: string[] }) => {
   return (
     <div className={styles.statsValue}>
       {names.map((x: string, i: number) => (
-        <p>
+        <p key={x}>
           <Emoji emoji={emojis[emojiMap[i]]} /> {x}
         </p>
       ))}
@@ -93,8 +93,6 @@ const PokemonDex = () => {
 
   const pokemonData = pokedex.find((x) => x.id === pokeId);
   if (!pokemonData) return notFound;
-
-  console.log(pokemonData);
   const navigate = useNavigate();
 
   const [shiny, setShiny] = useState(false);

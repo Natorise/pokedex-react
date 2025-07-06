@@ -12,7 +12,8 @@ back button fix :check:
 
 back button save scroll position
 scroll pagination, react-window
-remove console.log, fix errors
+remove console.log :check:
+fix warnings
 refactor
 
 

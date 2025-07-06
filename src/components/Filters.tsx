@@ -8,7 +8,7 @@ import styles from "./Filters.module.css";
 import { pokedex } from "../modules/pokedexHandler";
 import { normalize } from "../modules/normalize";
 
-const types = Object.keys(typeColors);
+const types: string[] = Object.keys(typeColors);
 
 export type FiltersType = {
   name: string;
@@ -56,19 +56,19 @@ const Filters = ({ filters, setFilters }: propsType) => {
       <select id="region" onChange={onSelectChange} value={filters.region}>
         <option value="">Select Region</option>
         {regions.map((x) => (
-          <option value={x}>{upperCaseFirst(x)}</option>
+          <option value={x} key={x}>{upperCaseFirst(x)}</option>
         ))}
       </select>
       <select id="type" onChange={onSelectChange} value={filters.type}>
         <option value="">Select Type</option>
         {types.map((x) => (
-          <option value={x}>{upperCaseFirst(x)}</option>
+          <option value={x} key={x}>{upperCaseFirst(x)}</option>
         ))}
       </select>
       <select id="rarity" onChange={onSelectChange} value={filters.rarity}>
         <option value="">Select Rarity</option>
         {rarities.map((x) => (
-          <option>{x}</option>
+          <option key={x}>{x}</option>
         ))}
       </select>
     </div>
