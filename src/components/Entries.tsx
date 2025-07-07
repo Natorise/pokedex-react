@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Entries.module.css";
 
 import Entry from "./Entry";
@@ -18,12 +18,41 @@ const Entries = ({ filters, setFilters }: propsType) => {
     setFilters(filters);
   }, [location.state]);
 
-  let filteredPokedex = filterPokedex(filters);
-  filteredPokedex = filteredPokedex.slice(0, 20);
+  const perPage = 20;
+  const [pokesLoaded, setPokesLoaded] = useState(perPage);
+
+  const filteredPokedex = useMemo(() => {
+    return filterPokedex(filters);
+  }, [filters]);
+
+  const slicedPokedex = useMemo(() => {
+    return filteredPokedex.slice(0, pokesLoaded);
+  }, [filteredPokedex, pokesLoaded]);
+
+  const lengthRef = useRef(filteredPokedex.length);
+  useEffect(() => {
+    lengthRef.current = filteredPokedex.length;
+    setPokesLoaded(perPage);
+  }, [filteredPokedex]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (pokesLoaded >= lengthRef.current) return;
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 200
+      ) {
+        setPokesLoaded((prev) => prev + 20);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll",handleScroll);
+  }, []);
 
   return (
     <div className={styles.entries}>
-      {filteredPokedex.map((pokemonData) => (
+      {slicedPokedex.map((pokemonData) => (
         <Entry
           key={pokemonData.id}
           types={pokemonData.types}
