@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Entries from "../components/Entries";
+import Entries, { pokesPerPage } from "../components/Entries";
 import Filters, {
   type FiltersType,
   defaultFilters,
@@ -9,9 +9,11 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   const [filters, setFilters] = useState<FiltersType>({ ...defaultFilters });
+  const [pokesLoaded, setPokesLoaded] = useState(pokesPerPage);
 
   const resetFilters = () => {
     setFilters({ ...defaultFilters });
+    setPokesLoaded(pokesPerPage)
   };
 
   return (
@@ -22,8 +24,17 @@ const Home = () => {
         height={100}
         onClick={resetFilters}
       />
-      <Filters filters={filters} setFilters={setFilters} />
-      <Entries filters={filters} setFilters={setFilters} />
+      <Filters
+        filters={filters}
+        setFilters={setFilters}
+        setPokesLoaded={setPokesLoaded}
+      />
+      <Entries
+        filters={filters}
+        setFilters={setFilters}
+        pokesLoaded={pokesLoaded}
+        setPokesLoaded={setPokesLoaded}
+      />
     </div>
   );
 };

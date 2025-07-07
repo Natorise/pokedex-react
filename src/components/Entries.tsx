@@ -4,22 +4,17 @@ import styles from "./Entries.module.css";
 import Entry from "./Entry";
 import { filterPokedex, type FiltersType } from "./Filters";
 import { useLocation } from "react-router-dom";
+import LoadHomeState from "./LoadHomeState";
 type propsType = {
   filters: FiltersType;
   setFilters: React.Dispatch<React.SetStateAction<FiltersType>>;
+  pokesLoaded: number;
+  setPokesLoaded: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Entries = ({ filters, setFilters }: propsType) => {
-  const location = useLocation();
-  useEffect(() => {
-    const filters: FiltersType | undefined = location.state?.filters;
+export const pokesPerPage = 20;
 
-    if (!filters) return;
-    setFilters(filters);
-  }, [location.state]);
-
-  const perPage = 20;
-  const [pokesLoaded, setPokesLoaded] = useState(perPage);
+const Entries = ({ filters, setFilters,pokesLoaded, setPokesLoaded }: propsType) => {
 
   const filteredPokedex = useMemo(() => {
     return filterPokedex(filters);
@@ -32,7 +27,7 @@ const Entries = ({ filters, setFilters }: propsType) => {
   const lengthRef = useRef(filteredPokedex.length);
   useEffect(() => {
     lengthRef.current = filteredPokedex.length;
-    setPokesLoaded(perPage);
+    // setPokesLoaded(perPage)
   }, [filteredPokedex]);
 
   useEffect(() => {
@@ -52,6 +47,7 @@ const Entries = ({ filters, setFilters }: propsType) => {
 
   return (
     <div className={styles.entries}>
+      <LoadHomeState setFilters={setFilters} pokesLoaded={pokesLoaded} setPokesLoaded={setPokesLoaded}/>
       {slicedPokedex.map((pokemonData) => (
         <Entry
           key={pokemonData.id}
@@ -59,6 +55,7 @@ const Entries = ({ filters, setFilters }: propsType) => {
           name={pokemonData.name}
           id={pokemonData.id}
           filters={filters}
+          pokesLoaded={pokesLoaded}
         />
       ))}
     </div>

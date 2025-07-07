@@ -12,16 +12,22 @@ type propsType = {
   id: number;
   name: string;
   filters: FiltersType;
+  pokesLoaded: number;  
 };
 
-const Entry = ({ types, name, id, filters }: propsType) => {
+const Entry = ({ types, name, id, filters,pokesLoaded }: propsType) => {
   const navigate = useNavigate();
 
   const color = getColorFromTypes(types);
 
+  const onClick = ()=>{
+    const navOptions = { state: { filters, pokesLoaded, scrollY:window.scrollY} }
+    navigate(`/dex/${id}`, navOptions)
+  }
+
   return (
     <div
-      onClick={() => navigate(`/dex/${id}`, { state: { filters } })}
+      onClick={onClick}
       className={styles.entry}
       style={{ background: color }}
     >

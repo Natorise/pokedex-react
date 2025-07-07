@@ -10,12 +10,11 @@ mobile styling :check:
 back button fix :check:
 
 
-back button save scroll position
-scroll pagination, react-window
+back button save scroll position:check:
+scroll pagination, :check:
 remove console.log :check:
-fix warnings
 refactor
-
+fix names key, dupe keys
 
 
 

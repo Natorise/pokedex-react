@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import styles from "./PokemonDex.module.css";
@@ -10,6 +10,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 import PokemonButtons from "../components/PokemonButtons";
 import type { FiltersType } from "../components/Filters";
+import ScrollToTop from "../components/ScrollToTop";
 
 const notFound = "Pokemon not found.";
 
@@ -86,8 +87,8 @@ const PokemonDex = () => {
   const { id } = useParams<{ id: string }>();
 
   const location = useLocation();
-  const filters: FiltersType | undefined = location.state?.filters;
-
+  const state = location.state
+  console.log(state)
   const pokeId = Number(id);
   if (isNaN(pokeId)) return notFound;
 
@@ -100,10 +101,11 @@ const PokemonDex = () => {
 
   return (
     <div>
+      <ScrollToTop />
       <IoArrowBackCircleOutline
         className={styles.backButton}
         size={70}
-        onClick={() => navigate("/", { state: { filters } })}
+        onClick={() => navigate("/", { state })}
       />
       <div className={styles.center}>
         <PokemonButtons
@@ -177,7 +179,7 @@ const PokemonDex = () => {
               </RightField>
             ) : (
               ""
-            )}
+            )}            
           </div>
         </div>
       </div>

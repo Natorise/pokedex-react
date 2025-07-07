@@ -7,6 +7,7 @@ import upperCaseFirst from "../modules/upperCaseFirst";
 import styles from "./Filters.module.css";
 import { pokedex } from "../modules/pokedexHandler";
 import { normalize } from "../modules/normalize";
+import { pokesPerPage } from "./Entries";
 
 const types: string[] = Object.keys(typeColors);
 
@@ -20,6 +21,7 @@ export type FiltersType = {
 type propsType = {
   filters: FiltersType;
   setFilters: React.Dispatch<React.SetStateAction<FiltersType>>;
+  setPokesLoaded: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const defaultFilters = {
@@ -29,12 +31,18 @@ export const defaultFilters = {
   rarity: "",
 };
 
-const Filters = ({ filters, setFilters }: propsType) => {
+const Filters = ({
+  filters,
+  setFilters,
+  setPokesLoaded,
+}: propsType) => {
   const updateFilters = (key: keyof FiltersType, value: string) => {
     setFilters((prev) => ({
       ...prev,
       [key]: value,
     }));
+
+    setPokesLoaded(pokesPerPage);
   };
 
   const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,13 +64,17 @@ const Filters = ({ filters, setFilters }: propsType) => {
       <select id="region" onChange={onSelectChange} value={filters.region}>
         <option value="">Select Region</option>
         {regions.map((x) => (
-          <option value={x} key={x}>{upperCaseFirst(x)}</option>
+          <option value={x} key={x}>
+            {upperCaseFirst(x)}
+          </option>
         ))}
       </select>
       <select id="type" onChange={onSelectChange} value={filters.type}>
         <option value="">Select Type</option>
         {types.map((x) => (
-          <option value={x} key={x}>{upperCaseFirst(x)}</option>
+          <option value={x} key={x}>
+            {upperCaseFirst(x)}
+          </option>
         ))}
       </select>
       <select id="rarity" onChange={onSelectChange} value={filters.rarity}>
