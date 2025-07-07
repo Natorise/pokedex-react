@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import type { FiltersType } from "./Filters";
 import { useLocation } from "react-router-dom";
 
-type propsType = {
+type PropsType = {
   setFilters: React.Dispatch<React.SetStateAction<FiltersType>>;
   pokesLoaded: number;
   setPokesLoaded: React.Dispatch<React.SetStateAction<number>>;
@@ -12,7 +12,7 @@ const LoadHomeState = ({
   setFilters,
   pokesLoaded,
   setPokesLoaded,
-}: propsType) => {
+}: PropsType) => {
   const location = useLocation();
 
   const scrollYRef = useRef<number | null>(null);

@@ -7,7 +7,7 @@ import styles from "./Entry.module.css";
 import { getColorFromTypes } from "../modules/getColorFromTypes";
 import type { FiltersType } from "./Filters";
 
-type propsType = {
+type PropsType = {
   types: string[];
   id: number;
   name: string;
@@ -15,7 +15,7 @@ type propsType = {
   pokesLoaded: number;  
 };
 
-const Entry = ({ types, name, id, filters,pokesLoaded }: propsType) => {
+const Entry = ({ types, name, id, filters,pokesLoaded }: PropsType) => {
   const navigate = useNavigate();
 
   const color = getColorFromTypes(types);

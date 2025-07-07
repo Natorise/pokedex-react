@@ -8,13 +8,13 @@ import { pokedex } from "../modules/pokedexHandler";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { FiltersType } from "./Filters";
 
-type propsType = {
+type PropsType = {
   pokeId: number;
   shiny: boolean;
   setShiny: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const PokemonButtons = ({ pokeId, shiny, setShiny }: propsType) => {
+const PokemonButtons = ({ pokeId, shiny, setShiny }: PropsType) => {
   const navigate = useNavigate();
 
   const location = useLocation();

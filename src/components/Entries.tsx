@@ -5,7 +5,7 @@ import Entry from "./Entry";
 import { filterPokedex, type FiltersType } from "./Filters";
 import { useLocation } from "react-router-dom";
 import LoadHomeState from "./LoadHomeState";
-type propsType = {
+type PropsType = {
   filters: FiltersType;
   setFilters: React.Dispatch<React.SetStateAction<FiltersType>>;
   pokesLoaded: number;
@@ -14,7 +14,7 @@ type propsType = {
 
 export const pokesPerPage = 20;
 
-const Entries = ({ filters, setFilters,pokesLoaded, setPokesLoaded }: propsType) => {
+const Entries = ({ filters, setFilters,pokesLoaded, setPokesLoaded }: PropsType) => {
 
   const filteredPokedex = useMemo(() => {
     return filterPokedex(filters);

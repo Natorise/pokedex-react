@@ -18,7 +18,7 @@ export type FiltersType = {
   rarity: string;
 };
 
-type propsType = {
+type PropsType = {
   filters: FiltersType;
   setFilters: React.Dispatch<React.SetStateAction<FiltersType>>;
   setPokesLoaded: React.Dispatch<React.SetStateAction<number>>;
@@ -35,7 +35,7 @@ const Filters = ({
   filters,
   setFilters,
   setPokesLoaded,
-}: propsType) => {
+}: PropsType) => {
   const updateFilters = (key: keyof FiltersType, value: string) => {
     setFilters((prev) => ({
       ...prev,
