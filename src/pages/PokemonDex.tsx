@@ -75,7 +75,7 @@ const Names = ({ names }: { names: string[] }) => {
   return (
     <div className={styles.statsValue}>
       {names.map((x: string, i: number) => (
-        <p key={x}>
+        <p key={i}>
           <Emoji emoji={emojis[emojiMap[i]]} /> {x}
         </p>
       ))}
@@ -88,7 +88,6 @@ const PokemonDex = () => {
 
   const location = useLocation();
   const state = location.state
-  console.log(state)
   const pokeId = Number(id);
   if (isNaN(pokeId)) return notFound;
 
