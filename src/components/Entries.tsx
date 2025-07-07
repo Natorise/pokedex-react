@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import styles from "./Entries.module.css";
 
 import Entry from "./Entry";
 import { filterPokedex, type FiltersType } from "./Filters";
-import { useLocation } from "react-router-dom";
 import LoadHomeState from "./LoadHomeState";
 type PropsType = {
   filters: FiltersType;
