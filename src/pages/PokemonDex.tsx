@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import styles from "./PokemonDex.module.css";
 import { pokedex } from "../modules/pokedexHandler";
-import Types from "../components/Types";
-import PokemonImage from "../components/PokemonImage";
 import { getColorFromTypes } from "../modules/getColorFromTypes";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 
