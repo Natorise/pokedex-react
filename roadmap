@@ -13,8 +13,9 @@ back button fix :check:
 back button save scroll position:check:
 scroll pagination, :check:
 remove console.log :check:
-refactor
-fix names key, dupe keys
+fix names dupe keys :check:
+
+refactor (primarily PokemonDex.tsx)
 
 
 

@@ -18,7 +18,8 @@ const PokemonButtons = ({ pokeId, shiny, setShiny }: PropsType) => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const filters: FiltersType | undefined = location.state?.filters;
+  const state = location.state;
+
 
   const [previousPokeData, nextPokeData] = getPreviousNextPokeData(pokeId);
 
@@ -31,7 +32,7 @@ const PokemonButtons = ({ pokeId, shiny, setShiny }: PropsType) => {
       <div
         className={`${styles.button} ${styles.leftButton}`}
         onClick={() => {
-          navigate(`/dex/${previousPokeData.id}`, { state: { filters } });
+          navigate(`/dex/${previousPokeData.id}`, { state });
         }}
       >
         <IoArrowBackOutline size={50} color="white" />
@@ -48,7 +49,7 @@ const PokemonButtons = ({ pokeId, shiny, setShiny }: PropsType) => {
       <div
         className={`${styles.button} ${styles.rightButton}`}
         onClick={() => {
-          navigate(`/dex/${nextPokeData.id}`, { state: { filters } });
+          navigate(`/dex/${nextPokeData.id}`, { state });
         }}
       >
         {nextPokeData.name}
