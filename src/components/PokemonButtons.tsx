@@ -6,7 +6,6 @@ import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 import styles from "./PokemonButtons.module.css";
 import { pokedex } from "../modules/pokedexHandler";
 import { useLocation, useNavigate } from "react-router-dom";
-import type { FiltersType } from "./Filters";
 
 type PropsType = {
   pokeId: number;
